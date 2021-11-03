@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+           <div class="heading">rgb color picker</div>
+           <div>
+               <input type="text" id="output"  readonly>
+               <button class="btn">click to copy</button>
+            </div>
+    </nav>
+
+    <button class="btn" id="click" onclick="generate_color()">click to generate</button>
+    
+</body>
+ 
+<style>
+     *{
+         padding: 0;
+         margin: 0;
+         box-sizing: border-box;
+         font-family:Balsamiq Sans;
+         user-select: none;
+     }
+
+     nav{
+         height: 80px;
+         width: 100%;
+         background-color:lightblue;
+         display: flex;
+         justify-content: space-around;
+         align-items: center;
+     }
+
+     nav > div:nth-child(2){
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+     }
+
+     nav .heading{
+        font-size: 35px;
+        font-weight: bold;
+     }
+
+     nav #output{
+         height: 40px;
+         width: 250px;
+         font-size: 22px;
+         outline: none;
+         border: none;
+         text-align: center;
+         font-family:Balsamiq Sans;
+     }
+
+     .btn{
+         height: 40px;
+         width:200px;
+         font-size: 20px;
+         cursor: pointer;
+         background-color:#8080f5;
+         border: none;
+     }
+
+     #click{
+         position: absolute;
+         top: 90%;
+         left: 50%;
+         transform: translate(-50%,-50%);
+     }
+
+     @media (max-width:800px){
+
+           nav{
+               height: 120px;
+               flex-direction: column;
+               flex-wrap: wrap;
+           }
+     }
+
+</style>
+
+<script>
+
+
+           var outPut=document.querySelector('#output');
+           var button=document.querySelector('#click');
+           var click_to_copy_btn=document.querySelector('.btn');
+           var body=document.body;
+
+           const generate_color=()=>{
+
+               var color=`rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`;
+
+               body.style.background=color;
+               outPut.value=color;
+           }
+
+        click_to_copy_btn.addEventListener('click',()=>{
+
+        outPut.select();
+        document.execCommand('copy');
+
+      })
+
+
+
+      
+
+    
+</script>
+</html>
